@@ -55,4 +55,28 @@ public class Foundation extends StackOfCards {
 			}
 		}
 	}	
-}
+	
+	public void push2(Card card, Card base) {
+		if(isEmpty()){                //If this is empty,
+			if(card.getValue() == base.getValue()){ //then the card must be an ace to be pushed.
+				super.push(card);
+			} else {
+				throw new IllegalArgumentException();//TODO ""
+			}
+		} else {
+			//Otherwise the card's value must be 1 greater than the top card
+			//and be of the same suit.
+			if(card.getValue() == peek().getValue() + 1 
+					&& card.getSuit() == peek().getSuit()){
+				super.push(card);
+			} else {
+				throw new IllegalArgumentException();
+			}
+		}
+	}
+	
+	
+	public void pushBase(Card card) {
+		super.push(card);
+	}
+	
